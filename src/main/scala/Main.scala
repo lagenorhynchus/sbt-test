@@ -71,3 +71,34 @@ class C extends B
 object ABC {
   def f: B => B = (x: A) => x.asInstanceOf[C]
 }
+
+
+// Array
+object ArrayExercise {
+  def swapArray[T](arr: Array[T])(i: Int, j: Int): Unit = {
+    val tmp = arr(i)
+    arr(i) = arr(j)
+    arr(j) = tmp
+  }
+}
+
+// List
+object ListExercise {
+  def joinByComma(start: Int, end: Int): String = (start to end).mkString(",")
+
+  def reverse[T](xs: List[T]): List[T] = xs.foldLeft(List[T]())((acc, x) => x :: acc)
+
+  def sum(ns: List[Int]): Int = ns.foldRight(0)((n, acc) => n + acc)
+
+  def product(ns: List[Int]): Int = ns.foldRight(1)((n, acc) => n * acc)
+
+  def mkString[T](xs: List[T])(sep: String): String = xs.addString(new StringBuilder(), sep).toString
+
+  def map[T, U](xs: List[T])(f: T => U): List[U] =
+    xs.foldLeft(List[U]())((acc, x) => f(x) :: acc).reverse
+
+  def filter[T](xs: List[T])(f: T => Boolean): List[T] =
+    xs.foldLeft(List[T]())((acc, x) => if (f(x)) x :: acc else acc).reverse
+
+  def count[T](xs: List[T])(f: T => Boolean): Int = xs.foldLeft(0)((acc, x) => if (f(x)) 1 + acc else acc)
+}
