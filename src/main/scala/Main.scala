@@ -166,3 +166,45 @@ object PatternMatchingExercise {
     toBinarySearchTree(toList(t))
   }
 }
+
+
+// implicit parameter
+object ImplicitParameterExercise {
+  trait Monoid[T] {
+    def mzero: T
+    def mappend(a: T, b: T): T
+  }
+
+  object Monoid {
+    implicit val intMonoid = new Monoid[Int] {
+      def mzero = 0
+      def mappend(a: Int, b: Int) = a + b
+    }
+
+    implicit val stringMonoid = new Monoid[String] {
+      def mzero = ""
+      def mappend(a: String, b: String) = a + b
+    }
+
+    implicit val pointMonoid = new Monoid[Point] {
+      def mzero = Point(0, 0)
+      def mappend(a: Point, b: Point) = Point(a.x + b.x, a.y + b.y)
+    }
+  }
+
+  def sum[T: Monoid](xs: Seq[T]): T =
+    xs.foldLeft(implicitly[Monoid[T]].mzero)(implicitly[Monoid[T]].mappend)
+
+  case class Complex(r: Double, i: Double) {
+    override def toString(): String = {
+      val sign = if (i < 0) "" else "+"
+      s"${r}${sign}${i}i"
+    }
+  }
+  object Complex {
+    implicit val monoid = new Monoid[Complex] {
+      def mzero = Complex(0, 0)
+      def mappend(a: Complex, b: Complex): Complex = Complex(a.r + b.r, a.i + b.i)
+    }
+  }
+}
