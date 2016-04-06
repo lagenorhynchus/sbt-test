@@ -210,3 +210,35 @@ object ImplicitParameterExercise {
     }
   }
 }
+
+object OptionExercise {
+  val result1 =
+    Some(2).map { a =>
+      Some(3).map { b =>
+        Some(5).map { c =>
+          Some(7).map { d =>
+            Some(11).map { e => a * b * c * d * e }
+          }.flatten
+        }.flatten
+      }.flatten
+    }.flatten
+
+  val result2 =
+    Some(2).flatMap { a =>
+      Some(3).flatMap { b =>
+        Some(5).flatMap { c =>
+          Some(7).flatMap { d =>
+            Some(11).map { e => a * b * c * d * e }
+          }
+        }
+      }
+    }
+
+  val result3 = for {
+    a <- Some(2)
+    b <- Some(3)
+    c <- Some(5)
+    d <- Some(7)
+    e <- Some(11)
+  } yield a * b * c * d * e
+}
