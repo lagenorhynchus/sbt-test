@@ -192,8 +192,10 @@ object ImplicitParameterExercise {
     }
   }
 
-  def sum[T: Monoid](xs: Seq[T]): T =
-    xs.foldLeft(implicitly[Monoid[T]].mzero)(implicitly[Monoid[T]].mappend)
+  def sum[T: Monoid](xs: Seq[T]): T = {
+    val m = implicitly[Monoid[T]]
+    xs.foldLeft(m.mzero)(m.mappend)
+  }
 
   case class Complex(r: Double, i: Double) {
     override def toString(): String = {
