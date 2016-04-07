@@ -212,7 +212,7 @@ object ImplicitParameterExercise {
 }
 
 object OptionExercise {
-  val result1 =
+  val result1: Option[Int] =
     Some(2).map { a =>
       Some(3).map { b =>
         Some(5).map { c =>
@@ -223,7 +223,7 @@ object OptionExercise {
       }.flatten
     }.flatten
 
-  val result2 =
+  val result2: Option[Int] =
     Some(2).flatMap { a =>
       Some(3).flatMap { b =>
         Some(5).flatMap { c =>
@@ -234,11 +234,19 @@ object OptionExercise {
       }
     }
 
-  val result3 = for {
+  val result3: Option[Int] = for {
     a <- Some(2)
     b <- Some(3)
     c <- Some(5)
     d <- Some(7)
     e <- Some(11)
+  } yield a * b * c * d * e
+
+  val result4: Either[String, Int] = for {
+    a <- Right(2).right
+    b <- Right(3).right
+    c <- Right(5).right
+    d <- Right(7).right
+    e <- Right(11).right
   } yield a * b * c * d * e
 }
