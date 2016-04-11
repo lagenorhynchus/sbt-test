@@ -64,7 +64,7 @@ object Stack {
   def apply(): Stack[Nothing] = EmptyStack
 }
 
-// covariant (return type) & contravariant (argument type)
+// covariant (result type) & contravariant (argument type)
 class A
 class B extends A
 class C extends B
