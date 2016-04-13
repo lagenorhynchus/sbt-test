@@ -65,11 +65,11 @@ object Stack {
 }
 
 // covariant (result type) & contravariant (argument type)
-class A
-class B extends A
-class C extends B
+class AClass
+class BClass extends AClass
+class CClass extends BClass
 object ABC {
-  def f: B => B = (x: A) => x.asInstanceOf[C]
+  def f: BClass => BClass = (x: AClass) => x.asInstanceOf[CClass]
 }
 
 
