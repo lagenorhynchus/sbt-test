@@ -14,7 +14,7 @@ object Fibonacci {
     def prod(a: Matrix)(b: Matrix): Matrix = (a, b) match {
       case ((a11, a12, a21, a22), (b11, b12, b21, b22)) =>
         (a11 * b11 + a12 * b21, a11 * b12 + a12 * b22,
-       a21 * b11 + a22 * b21, a21 * b12 + a22 * b22)
+         a21 * b11 + a22 * b21, a21 * b12 + a22 * b22)
     }
     Stream.iterate((1, 0, 0, 1): Matrix)(prod((1, 1, 1, 0)))(i)._2
   }
@@ -29,17 +29,19 @@ object Fibonacci {
     def prod(a: Matrix)(b: Matrix): Matrix = (a, b) match {
       case ((a11, a12, a21, a22), (b11, b12, b21, b22)) =>
         (a11 * b11 + a12 * b21, a11 * b12 + a12 * b22,
-       a21 * b11 + a22 * b21, a21 * b12 + a22 * b22)
+         a21 * b11 + a22 * b21, a21 * b12 + a22 * b22)
     }
     pow(prod, (1, 1, 1, 0), i, (1, 0, 0, 1))._2
   }
 
-  val fibos: Stream[BigInt] = 0 #:: 1 #:: fibos.zip(fibos.tail).map { case (prev, curr) => prev + curr }
+  val fibos: Stream[BigInt] =
+    0 #:: 1 #:: fibos.zip(fibos.tail).map { case (prev, curr) => prev + curr }
 }
 
 object FibonacciTest {
   def main(args: Array[String]): Unit = {
     import Fibonacci._
+
     println("=== fibo ===")
     println((0 to 9) map { i => fibo(i) })
     println(fibo(100000))
