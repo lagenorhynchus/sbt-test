@@ -11,7 +11,7 @@ object Main {
 class Point(val x: Int, val y: Int) {
   def +(p: Point): Point = new Point(x + p.x, y + p.y)
 
-  override def toString(): String = s"($x, $y)"
+  override def toString: String = s"($x, $y)"
 }
 
 object Point {
@@ -198,7 +198,7 @@ object ImplicitParameterExercise {
   }
 
   case class Complex(r: Double, i: Double) {
-    override def toString(): String = {
+    override def toString: String = {
       val sign = if (i < 0) "" else "+"
       s"${r}${sign}${i}i"
     }
