@@ -94,11 +94,9 @@ object ListExercise {
 
   def mkString[T](xs: List[T])(sep: String): String = xs.addString(new StringBuilder(), sep).toString
 
-  def map[T, U](xs: List[T])(f: T => U): List[U] =
-    xs.foldLeft(List[U]())((acc, x) => f(x) :: acc).reverse
+  def map[T, U](xs: List[T])(f: T => U): List[U] = xs.foldLeft(List[U]())((acc, x) => f(x) :: acc).reverse
 
-  def filter[T](xs: List[T])(f: T => Boolean): List[T] =
-    xs.foldLeft(List[T]())((acc, x) => if (f(x)) x :: acc else acc).reverse
+  def filter[T](xs: List[T])(f: T => Boolean): List[T] = xs.foldLeft(List[T]())((acc, x) => if (f(x)) x :: acc else acc).reverse
 
   def count[T](xs: List[T])(f: T => Boolean): Int = xs.foldLeft(0)((acc, x) => if (f(x)) 1 + acc else acc)
 }
