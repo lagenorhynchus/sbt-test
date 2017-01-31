@@ -1,7 +1,6 @@
 sbt-test
 ========
 
-Scalaとsbtについての学習メモ。
+Study notes on Scala & sbt.
 
-※参考:
-[Scala研修テキスト](http://dwango.github.io/scala_text/)
+cf. [Scala研修テキスト](http://dwango.github.io/scala_text/)
