@@ -35,7 +35,7 @@ object Fibonacci {
   }
 
   val fibos: Stream[BigInt] =
-    0 #:: 1 #:: fibos.zip(fibos.tail).map { case (prev, curr) => prev + curr }
+    BigInt(0) #:: BigInt(1) #:: fibos.zip(fibos.tail).map { case (prev, curr) => prev + curr }
 }
 
 object FibonacciTest {
