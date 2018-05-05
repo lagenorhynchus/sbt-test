@@ -16,5 +16,3 @@ hs_err_pid*
 .ensime
 .ensime_cache/
 .idea/
-
-.java-version
