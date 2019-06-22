@@ -241,10 +241,10 @@ object OptionExercise {
   } yield a * b * c * d * e
 
   val result4: Either[String, Int] = for {
-    a <- Right(2).right
-    b <- Right(3).right
-    c <- Right(5).right
-    d <- Right(7).right
-    e <- Right(11).right
+    a <- Right(2)
+    b <- Right(3)
+    c <- Right(5)
+    d <- Right(7)
+    e <- Right(11)
   } yield a * b * c * d * e
 }
